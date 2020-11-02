@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Heroku Archival - GDPR</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css"
+	href="../assets/css/herokuStyles.css" />
+	
+	
+</head>
+<body>
+	<div class="topcont">
+		<div class="brandsec">
+			<img src="../assets/img/amazonlogo.jpg" width="85%" alt="AmazonLogo" />
+		</div>
+		<div class="rgtsect">
+			<h1>
+				<b>Heroku Archival - GDPR</b>
+			</h1>
+			<img src="../assets/img/gdpr.jpg" width="7%" alt="GDPRLogo" />
+		</div>
+	</div>
+
+	<div class="wrapper">
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/inputDetails" class="active">Current Input
+						Details</a></li>
+				<li><a href="/salesforceDetails">Salesforce Details</a></li>
+				<li><a href="/">Scheduler Information</a></li>
+				<li><a href="/">Job Information</a></li>
+			</ul>
+		</nav>
+		<div>
+		<main>
+			<h1>
+				<b>Current Input Details Page</b>
+			</h1>
+			<div class="flex-grid">
+			
+				<div class="userDetail">
+				 <h2 class="accordion">
+						<b>User Details</b>
+					</h2>
+				
+					<table id="inputDetailsTable">
+						<th>
+						<td>Id</td>
+						<td>sfid</td>
+						<td>Name</td>
+						<td>Alias</td>
+						<td>Username</td>
+						</th>
+						<tr th:each="contact : ${users}">
+							<td></td>
+							<td th:text="${contact.id}"></td>
+							<td th:text="${contact.sfid}"></td>
+							<td th:text="${contact.name}"></td>
+							<td th:text="${contact.alias}"></td>
+							<td th:text="${contact.Username}"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="categoryDetail">
+					<h2 class="accordion">
+						<b>Category Details</b>
+					</h2>
+					<table id="inputDetailsTable">
+						<th>
+						<td>Id</td>
+						<td>Category Name</td>
+						<td>Status</td>
+						</th>
+						<tr th:each="category : ${categories}">
+							<td></td>
+							<td th:text="${category.categoryId}"></td>
+							<td th:text="${category.categoryName}"></td>
+							<td th:text="${category.status}"></td>
+						</tr>
+					</table>
+
+				</div>
+
+
+			</div>
+
+			<div class="flex-grid">
+				<div class="countryCode">
+					<h2 class="accordion">
+						<b>Country Code Details</b>
+					</h2>
+					<table id="inputDetailsTable">
+						<th>
+						<td>CountryId</td>
+						<td>Region</td>
+						<td>CountyCode</td>
+						<td>CountryName</td>
+						<td>Status</td>
+						</th>
+						<tr th:each="cc : ${countryCode}">
+							<td></td>
+							<td th:text="${cc.Country_ID}"></td>
+							<td th:text="${cc.Region}"></td>
+							<td th:text="${cc.Country_Code}"></td>
+							<td th:text="${cc.Country_Name}"></td>
+							<td th:text="${cc.Status}"></td>
+
+						</tr>
+					</table>
+
+				</div>
+
+				<div class="anonymizationPaattern">
+					<h2 class="accordion">
+						<b>Anonymization Code Details</b>
+					</h2>
+					<table id="inputDetailsTable">
+
+						<th>
+						<td>AnonymizationID</td>
+						<td>AnonymizationName</td>
+						<td>FieldType</td>
+						<td>DescriptionDescription</td>
+						<td>AnonymizationOptions</td>
+						<td>Anonymization_Pattern</td>
+						</th>
+						<tr th:each="ap : ${anonymization}">
+						
+							<td></td>
+							<td th:text="${ap.Anonymization_ID}"></td>
+							<td th:text="${ap.Anonymization_Name}"></td>
+							<td th:text="${ap.Field_Type}"></td>
+							<td th:text="${ap.Description}"></td>
+							<td th:text="${ap.Anonymization_Options}"></td>
+							<td th:text="${ap.Anonymization_Pattern}"></td>
+
+						</tr>
+					</table>
+
+				</div>
+			</div>
+
+			<div class="flex-grid">
+				<div class="impactTable">
+					<h2 class="accordion">
+						<b>Impact Table Details</b>
+					</h2>
+					<table id="inputDetailsTable">
+						<th>
+						<td>ImpactTableId</td>
+						<td>ImpactTableName</td>
+						</th>
+						<tr th:each="impactData : ${impactTable}">
+
+							<td></td>
+
+							<td th:text="${impactData.Impact_Table_Id}"></td>
+							<td th:text="${impactData.Impact_Table_Name}"></td>
+
+						</tr>
+					</table>
+
+				</div>
+
+				<div class="impactField">
+					<h2 class="accordion">
+						<b>Impact Field Details</b>
+					</h2>
+					<table id="inputDetailsTable">
+
+						<th>
+						<td>Impact_Field_Id</td>
+						<td>Impact_Table_Id</td>
+						<td>Impact_Field_Name</td>
+						<td>Impact_Field_Type</td>
+						</th>
+						<tr th:each="ifield : ${impactField}">
+							<td></td>
+							<td th:text="${ifield.Impact_Field_Id}">...</td>
+							<td th:text="${ifield.Impact_Table_Id}">...</td>
+							<td th:text="${ifield.Impact_Field_Name}">...</td>
+							<td th:text="${ifield.Impact_Field_Type}">...</td>
+
+						</tr>
+					</table>
+
+				</div>
+			</div>
+			<div class="flex-grid">
+				<div class="impactField">
+					<h2 class="accordion">
+						<b>Policy Table Details</b>
+					</h2>
+					<table id="inputDetailsTable">
+						<th>
+						<td>Policy_ID</td>
+						<td>Category_Id</td>
+						<td>Country_Id</td>
+						<td>Policy_Criterion</td>
+						<td>Status</td>
+						<td>Depersonalization_Condition</td>
+
+
+						</th>
+						<tr th:each="policy : ${policyList}">
+							<td></td>
+
+							<td th:text="${policy.Policy_ID}"></td>
+							<td th:text="${policy.Category_Id}"></td>
+							<td th:text="${policy.Country_Id}"></td>
+							<td th:text="${policy.Policy_Criterion}"></td>
+							<td th:text="${policy.Status}"></td>
+							<td th:text="${policy.Depersonalization_Condition}"></td>
+
+						</tr>
+					</table>
+
+				</div>
+
+				<div class="impactField">
+					<h2 class="accordion">
+						<b>TriggerReference Details</b>
+					</h2>
+					<table id="inputDetailsTable">
+
+						<th>
+						<td>Trigger_Ref_Id</td>
+						<td>Abbreviation</td>
+						<td>Details</td>
+						<td>Field_Details</td>
+						<td>Condition</td>
+						</th>
+						<tr th:each="triggerrefList : ${triggerReferenceList}">
+							<td></td>
+							<td th:text="${triggerrefList.Trigger_Ref_Id}"></td>
+							<td th:text="${triggerrefList.Abbreviation}"></td>
+							<td th:text="${triggerrefList.Details}"></td>
+							<td th:text="${triggerrefList.Field_Details}"></td>
+							<td th:text="${triggerrefList.Condition}"></td>
+
+						</tr>
+					</table>
+
+				</div>
+			</div>
+			<div class="flex-grid">
+				<div class="impactField">
+					<h2 class="accordion">
+						<b>FieldAnonymizeMapping Table Details</b>
+					</h2>
+					<table id="inputDetailsTable">
+						<th>
+						<td>Mapping_Id</td>
+						<td>Impact_Field_Id</td>
+						<td>Category_Id</td>
+						<td>Country_Id</td>
+						<td>Policy_Criterion</td>
+						<td>Status</td>
+						<td>Anonymization_Id</td>
+
+
+						</th>
+						<tr th:each="fieldAnonymizemap : ${fieldAnonymizeMappingList}">
+							<td></td>
+
+							<td th:text="${fieldAnonymizemap.Mapping_Id}">...</td>
+							<td th:text="${fieldAnonymizemap.Impact_Field_Id}">...</td>
+							<td th:text="${fieldAnonymizemap.Category_Id}">...</td>
+							<td th:text="${fieldAnonymizemap.Country_Id}">...</td>
+							<td th:text="${fieldAnonymizemap.Policy_Criterion}">...</td>
+							<td th:text="${fieldAnonymizemap.Status}">...</td>
+							<td th:text="${fieldAnonymizemap.Anonymization_Id}">...</td>
+
+						</tr>
+					</table>
+
+				</div>
+
+
+			</div>
+
+
+		</main>
+	</div>
+	</div>
+<script th:inline="javascript">
+	/*<![CDATA[*/
+        var acc = document.getElementsByClassName("accordion");
+	var i;
+
+	for (i = 0; i < acc.length; i++) {
+	  acc[i].addEventListener("click", function() {
+	    /* Toggle between adding and removing the "active" class,
+	    to highlight the button that controls the panel */
+	    this.classList.toggle("active");
+
+	    /* Toggle between hiding and showing the active panel */
+	    var panel = this.nextElementSibling;
+	    if (panel.style.display === "block") {
+	      panel.style.display = "none";
+	    } else {
+	      panel.style.display = "block";
+	    }
+	  });
+	}
+        /*]]>*/
+
+    </script> 
+</body>
+</html>
